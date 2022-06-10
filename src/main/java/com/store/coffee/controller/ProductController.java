@@ -39,13 +39,13 @@ public class ProductController {
 		return repository.findAll();
 	}
 	
-	@CrossOrigin(origins = "http://localhost:4200")
+	@CrossOrigin(origins = "https://coffee-store-angular.herokuapp.com")
 	@GetMapping("/products/")
 	Optional<Product> searchById(@RequestParam long id){
 		return repository.findById(id);
 	}
 	
-	@CrossOrigin(origins = "http://localhost:4200")
+	@CrossOrigin(origins = "https://coffee-store-angular.herokuapp.com")
 	@GetMapping("/products/search/")
 	List<Product> searchByName(@RequestParam String name){
 		List<Product> products = repository.findAll();
@@ -61,7 +61,7 @@ public class ProductController {
 		return result;
 	}
 	
-	@CrossOrigin(origins = "http://localhost:4200")
+	@CrossOrigin(origins = "https://coffee-store-angular.herokuapp.com")
 	@GetMapping("/flavours")
 	List<String> getFlavours(){
 		List<Product> products = repository.findAll();
@@ -74,7 +74,7 @@ public class ProductController {
 		return flavours;
 	}
 	
-	@CrossOrigin(origins = "http://localhost:4200")
+	@CrossOrigin(origins = "https://coffee-store-angular.herokuapp.com")
 	@GetMapping("/grinds")
 	List<String> getGrinds(){
 		List<Product> products = repository.findAll();
@@ -87,7 +87,7 @@ public class ProductController {
 		return grinds;
 	}
 	
-	@CrossOrigin(origins = "http://localhost:4200")
+	@CrossOrigin(origins = "https://coffee-store-angular.herokuapp.com")
 	@PostMapping("/products")
 	Product newProduct(@RequestBody Product newProduct) {
 		newProduct.setFlavour(newProduct.getFlavour().toLowerCase());
@@ -110,7 +110,7 @@ public class ProductController {
 		return repository.save(newProduct);
 	}
 	
-	@CrossOrigin(origins = "http://localhost:4200")
+	@CrossOrigin(origins = "https://coffee-store-angular.herokuapp.com")
 	@PutMapping("/products/{id}")
 	Product replaceProduct(@RequestBody Product newProduct, @PathVariable long id) {
 		return repository.findById(id).map((product) -> {
@@ -128,7 +128,7 @@ public class ProductController {
 				});
 	}
 	
-	@CrossOrigin(origins = "http://localhost:4200")
+	@CrossOrigin(origins = "https://coffee-store-angular.herokuapp.com")
 	@DeleteMapping("products/{id}")
 	void deleteProduct(@PathVariable long id) {
 		repository.deleteById(id);
