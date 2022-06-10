@@ -33,7 +33,7 @@ public class ProductController {
 		this.repository = repository;
 	}
 	
-	@CrossOrigin(origins = "http://localhost:4200")
+	@CrossOrigin(origins = "https://coffee-store-angular.herokuapp.com/")
 	@GetMapping("/products")
 	List<Product> all(){
 		return repository.findAll();
