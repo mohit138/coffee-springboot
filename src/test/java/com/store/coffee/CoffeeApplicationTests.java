@@ -5,7 +5,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.transaction.Transactional;
+//import javax.transaction.Transactional;
 
 
 import org.junit.jupiter.api.Test;
@@ -16,7 +16,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import com.store.coffee.Repository.ProductRepository;
 import com.store.coffee.models.Product;
 
-@Transactional
+//@Transactional
 @SpringBootTest
 class CoffeeApplicationTests {
 	
@@ -46,7 +46,7 @@ class CoffeeApplicationTests {
 
 	
 	private Product getProduct() {
-		Product product = new Product("name","flavour","grind","type","description",34);
+		Product product = new Product(99,"name","flavour","grind","type","description",34);
 		return product;
 	}
 	
