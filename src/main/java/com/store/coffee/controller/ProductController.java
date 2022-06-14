@@ -8,6 +8,7 @@ import java.util.Set;
 import java.util.function.Consumer;
 import java.util.function.Function;
 
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -18,9 +19,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.store.coffee.Repository.ProductRepository;
 import com.store.coffee.exception.ProductExistsException;
 import com.store.coffee.models.Product;
+import com.store.coffee.repository.ProductRepository;
 
 @RestController
 public class ProductController {
@@ -35,18 +36,21 @@ public class ProductController {
 	
 	@CrossOrigin(origins = "http://localhost:4200")
 	@GetMapping("/products")
+//	@PreAuthorize("hasRole('USER') or hasRole('ADMIN')")
 	List<Product> all(){
 		return repository.findAll();
 	}
 	
 	@CrossOrigin(origins = "http://localhost:4200")
 	@GetMapping("/products/")
+//	@PreAuthorize("hasRole('USER') or hasRole('ADMIN')")
 	Optional<Product> searchById(@RequestParam long id){
 		return repository.findById(id);
 	}
 	
 	@CrossOrigin(origins = "http://localhost:4200")
 	@GetMapping("/products/search/")
+//	@PreAuthorize("hasRole('USER') or hasRole('ADMIN')")
 	List<Product> searchByName(@RequestParam String name){
 		List<Product> products = repository.findAll();
 		List<Product> result = new ArrayList<Product>();
@@ -63,6 +67,7 @@ public class ProductController {
 	
 	@CrossOrigin(origins = "http://localhost:4200")
 	@GetMapping("/flavours")
+//	@PreAuthorize("hasRole('USER') or hasRole('ADMIN')")
 	List<String> getFlavours(){
 		List<Product> products = repository.findAll();
 		Set<String> uniqueFlavours = new HashSet<String>();
@@ -76,6 +81,7 @@ public class ProductController {
 	
 	@CrossOrigin(origins = "http://localhost:4200")
 	@GetMapping("/grinds")
+//	@PreAuthorize("hasRole('USER') or hasRole('ADMIN')")
 	List<String> getGrinds(){
 		List<Product> products = repository.findAll();
 		Set<String> uniqueGrinds = new HashSet<String>();
@@ -89,6 +95,7 @@ public class ProductController {
 	
 	@CrossOrigin(origins = "http://localhost:4200")
 	@PostMapping("/products")
+	@PreAuthorize("hasRole('ADMIN')")
 	Product newProduct(@RequestBody Product newProduct) {
 		newProduct.setFlavour(newProduct.getFlavour().toLowerCase());
 		newProduct.setGrind(newProduct.getGrind().toLowerCase());
@@ -112,6 +119,7 @@ public class ProductController {
 	
 	@CrossOrigin(origins = "http://localhost:4200")
 	@PutMapping("/products/{id}")
+	@PreAuthorize("hasRole('ADMIN')")
 	Product replaceProduct(@RequestBody Product newProduct, @PathVariable long id) {
 		return repository.findById(id).map((product) -> {
 					product.setName(newProduct.getName());
@@ -130,6 +138,7 @@ public class ProductController {
 	
 	@CrossOrigin(origins = "http://localhost:4200")
 	@DeleteMapping("products/{id}")
+	@PreAuthorize("hasRole('ADMIN')")
 	void deleteProduct(@PathVariable long id) {
 		repository.deleteById(id);
 	}

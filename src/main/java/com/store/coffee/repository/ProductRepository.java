@@ -1,4 +1,4 @@
-package com.store.coffee.Repository;
+package com.store.coffee.repository;
 
 import java.util.List;
 
@@ -12,7 +12,7 @@ public interface ProductRepository extends MongoRepository<Product, Long> {
 	@Query("{name:'?0'}")
     Product findItemByName(String name);
     
-    @Query(value="{category:'?0'}", fields="{'name' : 1, 'quantity' : 1}")
+    @Query(value="{category:'?0'}", fields="{'name' : 1, 'price' : 1}")
     List<Product> findAll(String category);
     
     public long count();
