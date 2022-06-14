@@ -12,9 +12,8 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-
-import com.store.coffee.Repository.ProductRepository;
 import com.store.coffee.models.Product;
+import com.store.coffee.repository.ProductRepository;
 
 //@Transactional
 @SpringBootTest

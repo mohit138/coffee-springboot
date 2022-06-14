@@ -6,8 +6,8 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
-import com.store.coffee.Repository.ProductRepository;
 import com.store.coffee.models.Product;
+import com.store.coffee.repository.ProductRepository;
 
 @Configuration
 public class LoadDatabase {

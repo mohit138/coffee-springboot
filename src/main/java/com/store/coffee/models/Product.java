@@ -1,5 +1,7 @@
 package com.store.coffee.models;
 
+
+
 import org.springframework.data.annotation.Id;
 
 //import javax.persistence.Column;
@@ -34,7 +36,6 @@ public class Product {
 	}
 
 	@Id
-//	@GeneratedValue(strategy=GenerationType.AUTO)
 	private long id;
 	
 //	@Column(name="product_name", nullable=false)

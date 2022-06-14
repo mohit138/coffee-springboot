@@ -20,8 +20,8 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 import org.junit.jupiter.api.Test;
 
-import com.store.coffee.Repository.ProductRepository;
 import com.store.coffee.controller.ProductController;
+import com.store.coffee.repository.ProductRepository;
 
 @WebMvcTest(ProductController.class)
 public class ControllerTests {
