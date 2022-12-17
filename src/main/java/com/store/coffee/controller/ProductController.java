@@ -34,21 +34,21 @@ public class ProductController {
 		this.repository = repository;
 	}
 	
-	@CrossOrigin(origins = "https://coffee-store-angular.herokuapp.com/")
+	@CrossOrigin(origins = "https://angular-learning-project.vercel.app/")
 	@GetMapping("/products")
 //	@PreAuthorize("hasRole('USER') or hasRole('ADMIN')")
 	List<Product> all(){
 		return repository.findAll();
 	}
 	
-	@CrossOrigin(origins = "https://coffee-store-angular.herokuapp.com")
+	@CrossOrigin(origins = "https://angular-learning-project.vercel.app/")
 	@GetMapping("/products/")
 //	@PreAuthorize("hasRole('USER') or hasRole('ADMIN')")
 	Optional<Product> searchById(@RequestParam long id){
 		return repository.findById(id);
 	}
 	
-	@CrossOrigin(origins = "https://coffee-store-angular.herokuapp.com")
+	@CrossOrigin(origins = "https://angular-learning-project.vercel.app/")
 	@GetMapping("/products/search/")
 //	@PreAuthorize("hasRole('USER') or hasRole('ADMIN')")
 	List<Product> searchByName(@RequestParam String name){
@@ -65,7 +65,7 @@ public class ProductController {
 		return result;
 	}
 	
-	@CrossOrigin(origins = "https://coffee-store-angular.herokuapp.com")
+	@CrossOrigin(origins = "https://angular-learning-project.vercel.app/")
 	@GetMapping("/flavours")
 //	@PreAuthorize("hasRole('USER') or hasRole('ADMIN')")
 	List<String> getFlavours(){
@@ -79,7 +79,7 @@ public class ProductController {
 		return flavours;
 	}
 	
-	@CrossOrigin(origins = "https://coffee-store-angular.herokuapp.com")
+	@CrossOrigin(origins = "https://angular-learning-project.vercel.app/")
 	@GetMapping("/grinds")
 //	@PreAuthorize("hasRole('USER') or hasRole('ADMIN')")
 	List<String> getGrinds(){
@@ -93,7 +93,7 @@ public class ProductController {
 		return grinds;
 	}
 	
-	@CrossOrigin(origins = "https://coffee-store-angular.herokuapp.com")
+	@CrossOrigin(origins = "https://angular-learning-project.vercel.app/")
 	@PostMapping("/products")
 	@PreAuthorize("hasRole('ADMIN')")
 	Product newProduct(@RequestBody Product newProduct) {
@@ -117,7 +117,7 @@ public class ProductController {
 		return repository.save(newProduct);
 	}
 	
-	@CrossOrigin(origins = "https://coffee-store-angular.herokuapp.com")
+	@CrossOrigin(origins = "https://angular-learning-project.vercel.app/")
 	@PutMapping("/products/{id}")
 	@PreAuthorize("hasRole('ADMIN')")
 	Product replaceProduct(@RequestBody Product newProduct, @PathVariable long id) {
@@ -136,7 +136,7 @@ public class ProductController {
 				});
 	}
 	
-	@CrossOrigin(origins = "https://coffee-store-angular.herokuapp.com")
+	@CrossOrigin(origins = "https://angular-learning-project.vercel.app/")
 	@DeleteMapping("products/{id}")
 	@PreAuthorize("hasRole('ADMIN')")
 	void deleteProduct(@PathVariable long id) {
